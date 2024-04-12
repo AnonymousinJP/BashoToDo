@@ -23,7 +23,10 @@ public struct Memo: Codable {
     }
 }
 
-func saveMemo(latitude: String, longitude: String, text: String) async throws {
+func saveMemo(Intlatitude: Int, Intlongitude: Int, text: String) async throws {
+    //IntからStringに変換する
+    let latitude = String(Intlatitude)
+    let longitude = String(Intlongitude)
     // Add a new document with a generated id.
     do {
       let ref = try await db.collection("memo").addDocument(data: [

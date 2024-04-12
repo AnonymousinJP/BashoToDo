@@ -18,16 +18,15 @@ struct MemoEditScreen: View {
                 .border(.gray)
                 .cornerRadius(10)
             Button {
-                print("データ追加した")
                 //非同期で呼び出す
                 Task {
                     do {
-                        try await saveMemo(latitude: "12345", longitude: "2345", text: "オムライス奢って")
+                        try await saveMemo(Intlatitude: 1234, Intlongitude: 09878, text: inputText)
                     } catch {
                         print("保存できませんでした")
                     }
                 }
-
+                print("データ追加した")
             } label: {
                 Text("保存")
             }
