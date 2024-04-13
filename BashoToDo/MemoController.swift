@@ -77,4 +77,14 @@ class MemoController: ObservableObject {
         }
     }
 
+    func RemoveMemo(removeId: String) async {
+        do {
+          try await db.collection("memo").document(removeId).delete()
+          print("メモ消えた")
+        } catch {
+          print("消えんかった: \(error)")
+        }
+
+    }
+
 }
