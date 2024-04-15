@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B5745D82BC0339900CC9DE2 /* MapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5745D72BC0339900CC9DE2 /* MapScreen.swift */; };
+		3B5745DA2BC033AC00CC9DE2 /* MemoEditScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5745D92BC033AC00CC9DE2 /* MemoEditScreen.swift */; };
+		3B5745DC2BC033B900CC9DE2 /* MemoScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B5745DB2BC033B900CC9DE2 /* MemoScreen.swift */; };
 		954B55742BB0E2E100E08D77 /* BashoToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954B55732BB0E2E100E08D77 /* BashoToDoApp.swift */; };
-		954B55762BB0E2E100E08D77 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954B55752BB0E2E100E08D77 /* ContentView.swift */; };
+		954B55762BB0E2E100E08D77 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954B55752BB0E2E100E08D77 /* HomeScreen.swift */; };
 		954B55782BB0E2EA00E08D77 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 954B55772BB0E2EA00E08D77 /* Assets.xcassets */; };
 		954B557B2BB0E2EA00E08D77 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 954B557A2BB0E2EA00E08D77 /* Preview Assets.xcassets */; };
-		954B55852BB0E2EC00E08D77 /* BashoToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954B55842BB0E2EC00E08D77 /* BashoToDoTests.swift */; };
-		954B558F2BB0E2EC00E08D77 /* BashoToDoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954B558E2BB0E2EC00E08D77 /* BashoToDoUITests.swift */; };
-		954B55912BB0E2EC00E08D77 /* BashoToDoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954B55902BB0E2EC00E08D77 /* BashoToDoUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,16 +34,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B5745D72BC0339900CC9DE2 /* MapScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreen.swift; sourceTree = "<group>"; };
+		3B5745D92BC033AC00CC9DE2 /* MemoEditScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoEditScreen.swift; sourceTree = "<group>"; };
+		3B5745DB2BC033B900CC9DE2 /* MemoScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoScreen.swift; sourceTree = "<group>"; };
 		954B55702BB0E2E100E08D77 /* BashoToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BashoToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		954B55732BB0E2E100E08D77 /* BashoToDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BashoToDoApp.swift; sourceTree = "<group>"; };
-		954B55752BB0E2E100E08D77 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		954B55752BB0E2E100E08D77 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		954B55772BB0E2EA00E08D77 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		954B557A2BB0E2EA00E08D77 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		954B55802BB0E2EC00E08D77 /* BashoToDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BashoToDoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		954B55842BB0E2EC00E08D77 /* BashoToDoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BashoToDoTests.swift; sourceTree = "<group>"; };
 		954B558A2BB0E2EC00E08D77 /* BashoToDoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BashoToDoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		954B558E2BB0E2EC00E08D77 /* BashoToDoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BashoToDoUITests.swift; sourceTree = "<group>"; };
-		954B55902BB0E2EC00E08D77 /* BashoToDoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BashoToDoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				954B55722BB0E2E100E08D77 /* BashoToDo */,
-				954B55832BB0E2EC00E08D77 /* BashoToDoTests */,
-				954B558D2BB0E2EC00E08D77 /* BashoToDoUITests */,
 				954B55712BB0E2E100E08D77 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,7 +93,10 @@
 			isa = PBXGroup;
 			children = (
 				954B55732BB0E2E100E08D77 /* BashoToDoApp.swift */,
-				954B55752BB0E2E100E08D77 /* ContentView.swift */,
+				954B55752BB0E2E100E08D77 /* HomeScreen.swift */,
+				3B5745D72BC0339900CC9DE2 /* MapScreen.swift */,
+				3B5745D92BC033AC00CC9DE2 /* MemoEditScreen.swift */,
+				3B5745DB2BC033B900CC9DE2 /* MemoScreen.swift */,
 				954B55772BB0E2EA00E08D77 /* Assets.xcassets */,
 				954B55792BB0E2EA00E08D77 /* Preview Content */,
 			);
@@ -108,23 +109,6 @@
 				954B557A2BB0E2EA00E08D77 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		954B55832BB0E2EC00E08D77 /* BashoToDoTests */ = {
-			isa = PBXGroup;
-			children = (
-				954B55842BB0E2EC00E08D77 /* BashoToDoTests.swift */,
-			);
-			path = BashoToDoTests;
-			sourceTree = "<group>";
-		};
-		954B558D2BB0E2EC00E08D77 /* BashoToDoUITests */ = {
-			isa = PBXGroup;
-			children = (
-				954B558E2BB0E2EC00E08D77 /* BashoToDoUITests.swift */,
-				954B55902BB0E2EC00E08D77 /* BashoToDoUITestsLaunchTests.swift */,
-			);
-			path = BashoToDoUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,7 +175,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					954B556F2BB0E2E100E08D77 = {
 						CreatedOnToolsVersion = 14.2;
@@ -257,8 +241,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				954B55762BB0E2E100E08D77 /* ContentView.swift in Sources */,
+				3B5745D82BC0339900CC9DE2 /* MapScreen.swift in Sources */,
+				954B55762BB0E2E100E08D77 /* HomeScreen.swift in Sources */,
 				954B55742BB0E2E100E08D77 /* BashoToDoApp.swift in Sources */,
+				3B5745DA2BC033AC00CC9DE2 /* MemoEditScreen.swift in Sources */,
+				3B5745DC2BC033B900CC9DE2 /* MemoScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,7 +253,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				954B55852BB0E2EC00E08D77 /* BashoToDoTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,8 +260,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				954B55912BB0E2EC00E08D77 /* BashoToDoUITestsLaunchTests.swift in Sources */,
-				954B558F2BB0E2EC00E08D77 /* BashoToDoUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +315,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -391,6 +376,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -417,13 +403,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BashoToDo/Preview Content\"";
+				DEVELOPMENT_TEAM = 922N7TF68N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -445,13 +435,17 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BashoToDo/Preview Content\"";
+				DEVELOPMENT_TEAM = 922N7TF68N;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
