@@ -32,10 +32,12 @@ struct MemoScreen: View {
             memoController.MemoLister()
         }
 
+
     }
     private func formatDate(_ timestamp: Timestamp) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return dateFormatter.string(from: timestamp.dateValue())
+
     }
 }

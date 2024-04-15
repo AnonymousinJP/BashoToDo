@@ -46,6 +46,8 @@ struct MemoEditScreen: View {
     }
 }
 
-#Preview {
-    MemoEditScreen()
+struct MemoEditScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        MemoEditScreen()
+    }
 }
