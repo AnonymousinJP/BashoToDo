@@ -11,7 +11,10 @@ import SwiftUI
 struct BashoToDoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //HomeScreen()
+            MapScreen()
+            //MemoEditScreen()
+            //MemoScreen()
         }
     }
 }
