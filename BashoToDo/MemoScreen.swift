@@ -13,6 +13,8 @@ struct MemoScreen: View {
     }
 }
 
-#Preview {
-    MemoScreen()
+struct MemoScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        MemoScreen()
+    }
 }
