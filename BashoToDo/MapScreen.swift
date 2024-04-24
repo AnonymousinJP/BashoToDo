@@ -6,27 +6,74 @@
 //
 
 import SwiftUI
-
 import MapKit
 import CoreLocation //for getting current location
 
-class MapViewModel: NSObject, ObservableObject, CLLocationManagerDelegate{
-    @Published var mapView = MKMapView() //
-    @Published var region: MKCoordinateRegion!
-    @Published var permissionDenied = false
-    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
-        switch manager.authorizationStatus{
-        case .denied:
-            //Alert
-            permissionDenied.toggle()
-        case .notDetermined:
-            //Requesting
-            manager.requestWhenInUseAuthorization()
-        default:()
+class ViewModel : NSObject, ObservableObject, MKLocalSearchCompleterDelegate {
+    var completer = MKLocalSearchCompleter()
+    @Published var location = ""
+    @Published var searchQuery = ""
+    @Published var completions: [MKLocalSearchCompletion] = []
+    @Published var locationDetail = ""
+    
+    override init(){
+        super.init()
+        completer.delegate = self /*initialization*/
+        completer.resultTypes = .pointOfInterest /*only point*/
+    }
+    func onSearchLocation() {
+        if searchQuery == location {
+            completions = []
+            return
+        }
+        
+        searchQuery = location
+        
+        if searchQuery.isEmpty {
+            completions = []
+        }
+        else {
+            if completer.queryFragment != searchQuery {
+                completer.queryFragment = searchQuery
+            }
         }
     }
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error.localizedDescription)
+    func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
+        DispatchQueue.main.async {
+            if self.searchQuery.isEmpty {
+                self.completions = .init()
+            }
+            else {
+                self.completions = completer.results
+            }
+        }
+    }
+    func onLocationTap(_ completion:MKLocalSearchCompletion){
+        DispatchQueue.main.async {
+            self.location = completion.title
+            self.searchQuery = self.location
+
+            self.onSearch()
+        }
+    }
+    func onSearch(){
+        completions = []
+        locationDetail = ""
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = self.location
+        
+        MKLocalSearch(request: request).start { (response, error) in
+            if let error = error {
+                print("MKLocalSearch Error:\(error)")
+                return
+            }
+            if let mapItem = response?.mapItems.first {
+                DispatchQueue.main.async {
+                    self.locationDetail += "\n経度" + String(mapItem.placemark.coordinate.longitude)
+                    self.locationDetail += "\n緯度" + String(mapItem.placemark.coordinate.latitude)
+                }
+            }
+        }
     }
 }
 
@@ -48,21 +95,55 @@ struct MapView: View {
           }
     }
 }
-struct MapScreen: View {
-    @State private var searchAddress: String = ""
-    @State var mapData = MapViewModel()
+//MapView()
+
+struct searchBar: View {
+    //@State private var searchTxt: String = ""
+    @StateObject var viewModel = ViewModel()
     @State var locationManager = CLLocationManager()
     var body: some View {
-        ZStack(alignment: .top){
-            MapView()
-            //TextField("検索", text: $searchAddress, onEditingChanged: { _ in})
-                //.textFieldStyle(.roundedBorder)
-                //.padding()
+        VStack{
+            HStack{
+                TextField("検索", text: $viewModel.location)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.primary.opacity(0.6), lineWidth: 0.3))
+                    .onChange(of: viewModel.location) { newValue in
+                        viewModel.onSearchLocation()
+                    }
+            }
+            if viewModel.completions.count > 0 {
+                List(viewModel.completions, id: \.self) { completion in
+                    HStack{
+                        VStack(alignment: .leading){
+                            Text(completion.title)
+                            Text(completion.subtitle)
+                                .foregroundColor(Color.primary.opacity(0.5))
+                        }
+                        Spacer()
+                    }
+                    .contentShape(Rectangle())
+                    onTapGesture {
+                        viewModel.onLocationTap(completion)
+                    }
+                }
+            }
+            else {
+                HStack {
+                    Text(viewModel.locationDetail)
+                    Spacer()
+                }
+            }
+            Spacer()
         }
-        .onAppear(perform: {
-            locationManager.delegate = mapData
-            
-        })
+        .padding()
+    }
+}
+
+struct MapScreen: View{
+    var body: some View{
+        searchBar()
+        MapView()
     }
 }
 
@@ -76,4 +157,5 @@ struct MapScreen_Previews: PreviewProvider {
 //#Preview {
 //    MapScreen()
 //}
+
 
