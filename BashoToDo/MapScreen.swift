@@ -9,6 +9,32 @@ import SwiftUI
 import MapKit
 import CoreLocation //for getting current location
 
+// LocationDataManager
+class CurrentView : NSObject, ObservableObject, CLLocationManagerDelegate {
+    var locationManager = CLLocationManager()
+    @Published var region = MKCoordinateRegion()
+    override init(){
+        super.init()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 3.0
+        locationManager.startUpdatingLocation()
+    }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        //code to handle location updates
+        locations.last.map {
+            /*現在の座標*/
+            let center = CLLocationCoordinate2D(latitude: $0.coordinate.latitude, longitude: $0.coordinate.longitude)
+            let span = MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+            region = MKCoordinateRegion(center: center, span: span)
+        }
+    }
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("error: \(error.localizedDescription)")
+    }
+}
+
 class ViewModel : NSObject, ObservableObject, MKLocalSearchCompleterDelegate {
     var completer = MKLocalSearchCompleter()
     @Published var location = ""
@@ -78,20 +104,16 @@ class ViewModel : NSObject, ObservableObject, MKLocalSearchCompleterDelegate {
 }
 
 struct MapView: View {
-    let locationManager = CLLocationManager()
-    @State private var region = MKCoordinateRegion(
-            center: CLLocationCoordinate2D(latitude: 35.011_665, longitude: 135.768_326),
-            span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
-        )
+    @StateObject var currentView = CurrentView()
     var body: some View {
         Map(
-          coordinateRegion: $region,
+            coordinateRegion: .constant(currentView.region),
           showsUserLocation: true,
           userTrackingMode: .constant(.follow)
         )
           .edgesIgnoringSafeArea(.all)
           .onAppear {
-              locationManager.requestWhenInUseAuthorization()
+              currentView.locationManager.requestWhenInUseAuthorization()
           }
     }
 }
@@ -148,4 +170,9 @@ struct MapScreen_Previews: PreviewProvider {
 //    MapScreen()
 //}
 
+ /*@State private var region = MKCoordinateRegion(
+         center: CLLocationCoordinate2D(latitude: 35.011_665, longitude: 135.768_326),
+         span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+ )*/
+ 
 
