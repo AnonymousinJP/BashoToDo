@@ -95,58 +95,48 @@ struct MapView: View {
           }
     }
 }
-//MapView()
 
-struct searchBar: View {
-    //@State private var searchTxt: String = ""
+struct SearchBar: View {
     @StateObject var viewModel = ViewModel()
     @State var locationManager = CLLocationManager()
     var body: some View {
-        VStack{
-            HStack{
-                TextField("検索", text: $viewModel.location)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.primary.opacity(0.6), lineWidth: 0.3))
-                    .onChange(of: viewModel.location) { newValue in
-                        viewModel.onSearchLocation()
-                    }
-            }
-            if viewModel.completions.count > 0 {
-                List(viewModel.completions, id: \.self) { completion in
-                    HStack{
-                        VStack(alignment: .leading){
-                            Text(completion.title)
-                            Text(completion.subtitle)
-                                .foregroundColor(Color.primary.opacity(0.5))
-                        }
-                        Spacer()
-                    }
-                    .contentShape(Rectangle())
-                    onTapGesture {
-                        viewModel.onLocationTap(completion)
-                    }
+        ZStack(alignment:.top){
+            TextField("検索", text: $viewModel.location)
+                .textFieldStyle(.roundedBorder)
+                .onChange(of: viewModel.location) { newValue in
+                    viewModel.onSearchLocation()
                 }
-            }
-            else {
-                HStack {
-                    Text(viewModel.locationDetail)
-                    Spacer()
-                }
-            }
-            Spacer()
         }
-        .padding()
+        if viewModel.completions.count > 0 {
+            List(viewModel.completions, id: \.self) { completion in
+                HStack{
+                    VStack(alignment: .leading){
+                        Text(completion.title)
+                        Text(completion.subtitle)
+                            .foregroundColor(Color.primary.opacity(0.5))
+                    }
+                }
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    viewModel.onLocationTap(completion)
+                }
+            }
+        }
+        else {
+            HStack {
+                Text(viewModel.locationDetail)
+                Spacer()
+            }
+        }
     }
 }
 
-struct MapScreen: View{
-    var body: some View{
-        searchBar()
+struct MapScreen: View {
+    var body: some View {
+        SearchBar()
         MapView()
     }
 }
-
 
 struct MapScreen_Previews: PreviewProvider {
     static var previews: some View {
